@@ -2,6 +2,7 @@
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
 ![Tests](https://github.com/php-filter/string-filter/workflows/Testing/badge.svg?=1.x)
 [![Latest Version](https://img.shields.io/github/tag/php-filter/string-filter.svg)](https://github.com/php-filter/string-filter/releases)
+![GitHub](https://img.shields.io/github/license/php-filter/string-filter.svg)
 
 PHP String Filter is a library to perform character string transformation using a chain. You can use the most popular filters built into PHP and additional ones added by the author and community.
 
