@@ -37,7 +37,7 @@ class FiltersTest extends TestCase
 
     public function testShouldGetInfoAboutValue(): void
     {
-        $info = Filter::of('wikipedia is a free online encyclopedia, created and edited by by volunteers')->getInfo();
+        $info = Filter::of('wikipedia is a free online encyclopedia, created and edited by by volunteers')->info();
 
         self::assertThat($info->wordsCount(), self::equalTo(12));
         self::assertThat($info->length(), self::equalTo(76));

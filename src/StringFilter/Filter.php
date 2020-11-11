@@ -38,7 +38,7 @@ final class Filter
         return $this;
     }
 
-    public function getInfo(): ValueInfo
+    public function info(): ValueInfo
     {
         return new ValueInfo($this);
     }
