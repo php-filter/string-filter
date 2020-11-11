@@ -6,6 +6,8 @@
 
 PHP String Filter is a library to perform character string transformation using a chain. You can use the most popular filters built into PHP and additional ones added by the author and community.
 
+For a list of filters and more examples of their application, see [unit tests](https://github.com/php-filter/string-filter/tree/main/tests/Filters).
+
 **Example filter:**
 
 ```php
@@ -39,6 +41,12 @@ $info->length(); // 76
 $info->wordsCount(); // 12
 $info->phaseCount('ee'); // 2
 ```
+
+## Roadmap
+
+- [ ] Add more filters
+- [ ] Description of all filters with examples
+- [ ] You tell me...
 
 ## License
 
