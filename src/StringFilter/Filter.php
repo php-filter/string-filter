@@ -55,7 +55,7 @@ final class Filter
 
     public function limit(int $limit): self
     {
-        $this->value = substr($this->value, 0, $limit);
+        $this->value = mb_substr($this->value, 0, $limit);
 
         return $this;
     }
@@ -69,7 +69,7 @@ final class Filter
 
     public function lowerFirst(): self
     {
-        $this->value = lcfirst($this->value);
+        $this->value = mb_strtolower(mb_substr($this->value , 0, 1)).mb_substr($this->value , 1);
 
         return $this;
     }
@@ -174,7 +174,7 @@ final class Filter
 
     public function substr(int $start, int $length): self
     {
-        $this->value = substr($this->value, $start, $length);
+        $this->value = mb_substr($this->value, $start, $length);
 
         return $this;
     }
@@ -209,14 +209,14 @@ final class Filter
 
     public function upperFirst(): self
     {
-        $this->value = ucfirst($this->value);
+        $this->value = mb_strtoupper(mb_substr($this->value , 0, 1)).mb_substr($this->value , 1);
 
         return $this;
     }
 
     public function upperWords(): self
     {
-        $this->value = ucwords($this->value);
+        $this->value = mb_convert_case($this->value, MB_CASE_TITLE, 'UTF-8');
 
         return $this;
     }
