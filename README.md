@@ -1,2 +1,2 @@
-# test
-![Tests](https://github.com/mkarolczyk/test/workflows/Testing/badge.svg?=1.x)
+# PHP String Filters
+![Tests](https://github.com/php-filter/string-filter/workflows/Testing/badge.svg?=1.x)
