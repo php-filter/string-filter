@@ -24,7 +24,7 @@ $groupFilters = function ($value) {
 	return Filter::of($value)->trim()->upperFirst()->append('.');
 };
 
-$value = $groupFilters(' wikipedia is a free online encyclopedia');
+$groupFilters(' wikipedia is a free online encyclopedia');
 
 // 'Wikipedia is a free online encyclopedia.'
 ```
