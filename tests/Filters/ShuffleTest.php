@@ -14,6 +14,6 @@ final class ShuffleTest extends TestCase
         $filter = Filter::of('test')->shuffle();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertEquals(4, $filter->getInfo()->length());
+        self::assertEquals(4, $filter->info()->length());
     }
 }
