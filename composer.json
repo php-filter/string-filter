@@ -1,0 +1,49 @@
+{
+    "name": "php-filter/string",
+    "description": "Take advantage of the ability to filter thongs with a filter chain.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Milosz Karolczyk",
+            "email": "milosz.karolczyk@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "ext-iconv": "*"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpstan/phpstan": "^0.12.54",
+        "phpunit/phpunit": "^9.3",
+        "vimeo/psalm": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Smart\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Smart\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "fix-cs": [
+            "php-cs-fixer fix"
+        ],
+        "static:analyze": [
+            "vendor/bin/psalm --output-format=compact",
+            "vendor/bin/phpstan analyze -c phpstan.neon",
+            "php-cs-fixer fix --dry-run --diff"
+        ],
+        "tests": [
+            "vendor/bin/phpunit --colors=always"
+        ]
+    }
+}
