@@ -15,10 +15,10 @@ class FiltersTest extends TestCase
             ->replace('/', ' ')
             ->replace('_', ' ')
             ->trim()
-            ->upperFirst(true);
+            ->upperWords();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('Big Ball Of Mud'));
+        self::assertThat($filter->value(), self::identicalTo('Big Ball Of Mud'));
     }
 
     public function testShouldGroupFilterAndRun(): void
@@ -32,7 +32,7 @@ class FiltersTest extends TestCase
         $filters = $groupFilters($value);
 
         self::assertThat($filters, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filters->result(), self::identicalTo('Wikipedia is a free online encyclopedia.'));
+        self::assertThat($filters->value(), self::identicalTo('Wikipedia is a free online encyclopedia.'));
     }
 
     public function testShouldGetInfoAboutValue(): void

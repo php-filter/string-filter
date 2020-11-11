@@ -9,12 +9,12 @@ PHP String Filter is a library to perform character string transformation using 
 **Example filter:**
 
 ```php
-$value = Filter::of('/_big_ball_of_mud_/')
+$filter = Filter::of('/_big_ball_of_mud_/')
             ->replace('/', '')
             ->replace('_', '')
-            ->upperFirst(true);
+            ->upperWords();
 
-// 'Big Ball Of Mud'
+$filter->value(); // 'Big Ball Of Mud'
 ```
 
 **An example of a reusable filter grouping:**
@@ -24,9 +24,10 @@ $groupFilters = function ($value) {
 	return Filter::of($value)->trim()->upperFirst()->append('.');
 };
 
-$groupFilters(' wikipedia is a free online encyclopedia');
+$filter = $groupFilters(' wikipedia is a free online encyclopedia');
 
-// 'Wikipedia is a free online encyclopedia.'
+$filter->value(); // 'Wikipedia is a free online encyclopedia.'
+
 ```
 
 **Example of value information:**

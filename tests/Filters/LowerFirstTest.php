@@ -14,6 +14,6 @@ final class LowerFirstTest extends TestCase
         $filter = Filter::of('Big Ben')->lowerFirst();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('big Ben'));
+        self::assertThat($filter->value(), self::identicalTo('big Ben'));
     }
 }

@@ -14,7 +14,7 @@ final class WordWrapTest extends TestCase
         $filter = Filter::of('lucy Brown')->wordWrap(6, '</br>');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('lucy</br>Brown'));
+        self::assertThat($filter->value(), self::identicalTo('lucy</br>Brown'));
     }
 
     public function testShouldWordWrapStringAfterTreeChars(): void
@@ -22,6 +22,6 @@ final class WordWrapTest extends TestCase
         $filter = Filter::of('Big Design Up Front')->wordWrap(3, '</br>');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('Big</br>Design</br>Up</br>Front'));
+        self::assertThat($filter->value(), self::identicalTo('Big</br>Design</br>Up</br>Front'));
     }
 }

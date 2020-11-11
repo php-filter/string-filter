@@ -14,6 +14,6 @@ final class StrPadLeftTest extends TestCase
         $filter = Filter::of('2/10/2020')->strPadLeft(12, '0');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('0002/10/2020'));
+        self::assertThat($filter->value(), self::identicalTo('0002/10/2020'));
     }
 }

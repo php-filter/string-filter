@@ -14,6 +14,6 @@ final class ReverseTest extends TestCase
         $filter = Filter::of('test')->reverse();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('tset'));
+        self::assertThat($filter->value(), self::identicalTo('tset'));
     }
 }

@@ -14,6 +14,6 @@ final class LetterTest extends TestCase
         $filter = Filter::of('girl_123')->letter();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('girl'));
+        self::assertThat($filter->value(), self::identicalTo('girl'));
     }
 }

@@ -14,6 +14,6 @@ final class UpperTest extends TestCase
         $filter = Filter::of('lucy Brown')->upper();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('LUCY BROWN'));
+        self::assertThat($filter->value(), self::identicalTo('LUCY BROWN'));
     }
 }

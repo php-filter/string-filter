@@ -14,6 +14,6 @@ final class PrependTest extends TestCase
         $filter = Filter::of('Smith')->prepend('John ');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('John Smith'));
+        self::assertThat($filter->value(), self::identicalTo('John Smith'));
     }
 }

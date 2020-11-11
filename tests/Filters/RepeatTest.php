@@ -14,6 +14,6 @@ final class RepeatTest extends TestCase
         $filter = Filter::of('test')->repeat(3);
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('testtesttest'));
+        self::assertThat($filter->value(), self::identicalTo('testtesttest'));
     }
 }

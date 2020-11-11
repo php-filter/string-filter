@@ -18,13 +18,16 @@ final class Filter
         return new self($value);
     }
 
-    public function alnum(bool $withSpace = false): self
+    public function alnum(): self
     {
-        if ($withSpace === false) {
-            $regex = '/[^[:alnum:]]/u';
-        } else {
-            $regex = '/[^[:alnum:][:space:]]/u';
-        }
+        $this->value = (string) preg_replace('/[^[:alnum:]]/u', '', $this->value);
+
+        return $this;
+    }
+
+    public function alnumWith(string $chars): self
+    {
+        $regex = '/[^[:alnum:]'.$chars.']/u';
 
         $this->value = (string) preg_replace($regex, '', $this->value);
 
@@ -71,6 +74,18 @@ final class Filter
         return $this;
     }
 
+    public function htmlSpecialChars(): self {
+        $this->value = htmlspecialchars($this->value , ENT_QUOTES);
+
+        return $this;
+    }
+
+    public function htmlSpecialCharsDecode(): self {
+        $this->value = htmlspecialchars_decode($this->value , ENT_QUOTES);
+
+        return $this;
+    }
+
     public function numeric(): self
     {
         $this->value = (string) preg_replace('/[^0-9]/', '', $this->value);
@@ -113,7 +128,7 @@ final class Filter
         return $this;
     }
 
-    public function result(): string
+    public function value(): string
     {
         return $this->value;
     }
@@ -192,13 +207,16 @@ final class Filter
         return $this;
     }
 
-    public function upperFirst(bool $allWords = false): self
+    public function upperFirst(): self
     {
-        if ($allWords === false) {
-            $this->value = ucfirst($this->value);
-        } else {
-            $this->value = ucwords($this->value);
-        }
+        $this->value = ucfirst($this->value);
+
+        return $this;
+    }
+
+    public function upperWords(): self
+    {
+        $this->value = ucwords($this->value);
 
         return $this;
     }

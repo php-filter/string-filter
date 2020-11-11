@@ -14,6 +14,6 @@ final class NumericTest extends TestCase
         $filter = Filter::of('a123')->numeric();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('123'));
+        self::assertThat($filter->value(), self::identicalTo('123'));
     }
 }

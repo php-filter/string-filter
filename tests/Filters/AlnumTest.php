@@ -14,14 +14,6 @@ final class AlnumTest extends TestCase
         $filter = Filter::of('LLeMs!ZaF_F3dEX 4')->alnum();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('LLeMsZaFF3dEX4'));
-    }
-
-    public function testShouldLeaveOnlyLettersAndNumbersWithSpace(): void
-    {
-        $filter = Filter::of('LLeMs!ZaF_F3dEX 4')->alnum(true);
-
-        self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('LLeMsZaFF3dEX 4'));
+        self::assertThat($filter->value(), self::identicalTo('LLeMsZaFF3dEX4'));
     }
 }

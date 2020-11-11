@@ -14,6 +14,6 @@ final class AppendTest extends TestCase
         $filter = Filter::of('John')->append(' Smith');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('John Smith'));
+        self::assertThat($filter->value(), self::identicalTo('John Smith'));
     }
 }

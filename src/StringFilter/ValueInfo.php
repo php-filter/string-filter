@@ -15,7 +15,7 @@ final class ValueInfo
 
     public function length(): int
     {
-        return strlen($this->filter->result());
+        return strlen($this->filter->value());
     }
 
     public function count(): int
@@ -25,11 +25,11 @@ final class ValueInfo
 
     public function wordsCount(): int
     {
-        return str_word_count($this->filter->result(), 0);
+        return str_word_count($this->filter->value(), 0);
     }
 
     public function phaseCount(string $phase): int
     {
-        return substr_count($this->filter->result(), $phase);
+        return substr_count($this->filter->value(), $phase);
     }
 }

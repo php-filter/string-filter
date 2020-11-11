@@ -14,7 +14,7 @@ final class StripHtmlTest extends TestCase
         $filter = Filter::of('<b>test</b>')->stripHtml();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('test'));
+        self::assertThat($filter->value(), self::identicalTo('test'));
     }
 
     public function testShouldStripHtmlWithoutBold(): void
@@ -22,6 +22,6 @@ final class StripHtmlTest extends TestCase
         $filter = Filter::of('<u><b>test</b></u>')->stripHtml('<b>');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->result(), self::identicalTo('<b>test</b>'));
+        self::assertThat($filter->value(), self::identicalTo('<b>test</b>'));
     }
 }
