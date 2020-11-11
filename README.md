@@ -21,9 +21,9 @@ $value = Filter::of('/_big_ball_of_mud_/')
 ```php
 $info = Filter::of('wikipedia is a free online encyclopedia, created and edited by by volunteers')->info();
 
-$info->length() // 76
-$info->wordsCount() // 12
-$info->phaseCount('ee') // 2
+$info->length(); // 76
+$info->wordsCount(); // 12
+$info->phaseCount('ee'); // 2
 ```
 
 ## License
