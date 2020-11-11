@@ -13,7 +13,19 @@ $value = Filter::of('/_big_ball_of_mud_/')
             ->replace('_', '')
             ->upperFirst(true);
 
-// return 'Big Ball Of Mud'
+// 'Big Ball Of Mud'
+```
+
+**An example of a reusable filter grouping:**
+
+```php
+$groupFilters = function ($value) {
+	return Filter::of($value)->trim()->upperFirst()->append('.');
+};
+
+$value = $groupFilters(' wikipedia is a free online encyclopedia');
+
+// 'Wikipedia is a free online encyclopedia.'
 ```
 
 **Example of value information:**
