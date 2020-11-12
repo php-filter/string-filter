@@ -13,7 +13,8 @@ final class Filter
         $this->value = $value;
     }
 
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return $this->value;
     }
 
@@ -24,16 +25,16 @@ final class Filter
 
     public function alnum(): self
     {
-        $this->value = (string) preg_replace('/[^[:alnum:]]/u', '', $this->value);
+        $this->value = (string)preg_replace('/[^[:alnum:]]/u', '', $this->value);
 
         return $this;
     }
 
     public function alnumWith(string $chars): self
     {
-        $regex = '/[^[:alnum:]'.$chars.']/u';
+        $regex = '/[^[:alnum:]' . $chars . ']/u';
 
-        $this->value = (string) preg_replace($regex, '', $this->value);
+        $this->value = (string)preg_replace($regex, '', $this->value);
 
         return $this;
     }
@@ -45,6 +46,18 @@ final class Filter
         return $this;
     }
 
+    public function extractBetween(string $startElement, string $endElement): self
+    {
+        $startElement = preg_quote($startElement, '/');
+        $endElement = preg_quote($endElement, '/');
+        $regex = '/' . $startElement . '(.*?)' . $endElement . '/';
+
+        preg_match($regex, $this->value, $match);
+        $this->value = $match[1];
+
+        return $this;
+    }
+
     public function info(): ValueInfo
     {
         return new ValueInfo($this);
@@ -52,7 +65,7 @@ final class Filter
 
     public function letter(): self
     {
-        $this->value = (string) preg_replace('/[^[:alpha:]]/u', '', $this->value);
+        $this->value = (string)preg_replace('/[^[:alpha:]]/u', '', $this->value);
 
         return $this;
     }
@@ -73,7 +86,7 @@ final class Filter
 
     public function lowerFirst(): self
     {
-        $this->value = mb_strtolower(mb_substr($this->value, 0, 1)).mb_substr($this->value, 1);
+        $this->value = mb_strtolower(mb_substr($this->value, 0, 1)) . mb_substr($this->value, 1);
 
         return $this;
     }
@@ -94,14 +107,14 @@ final class Filter
 
     public function numeric(): self
     {
-        $this->value = (string) preg_replace('/[^0-9]/', '', $this->value);
+        $this->value = (string)preg_replace('/[^0-9]/', '', $this->value);
 
         return $this;
     }
 
     public function prepend(string $value): self
     {
-        $this->value = $value.$this->value;
+        $this->value = $value . $this->value;
 
         return $this;
     }
@@ -129,7 +142,7 @@ final class Filter
 
     public function replaceRegex(string $regex, string $replaceTo): self
     {
-        $this->value = (string) preg_replace($regex, $replaceTo, $this->value);
+        $this->value = (string)preg_replace($regex, $replaceTo, $this->value);
 
         return $this;
     }
@@ -215,7 +228,7 @@ final class Filter
 
     public function upperFirst(): self
     {
-        $this->value = mb_strtoupper(mb_substr($this->value, 0, 1)).mb_substr($this->value, 1);
+        $this->value = mb_strtoupper(mb_substr($this->value, 0, 1)) . mb_substr($this->value, 1);
 
         return $this;
     }
