@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Smart\StringFilter;
 
-final class Filter
+class Filter
 {
     private string $value;
 

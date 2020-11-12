@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Smart\StringFilter;
 
-final class ValueInfo
+class ValueInfo
 {
     private Filter $filter;
 
