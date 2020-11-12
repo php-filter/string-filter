@@ -21,6 +21,14 @@ class FiltersTest extends TestCase
         self::assertThat($filter->value(), self::identicalTo('Big Ball Of Mud'));
     }
 
+    public function testShouldFilterToString(): void
+    {
+        $filter = Filter::of('toString')->substr(2, 10);
+
+        self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
+        self::assertThat($filter->__toString(), self::identicalTo('String'));
+    }
+
     public function testShouldGroupFilterAndRun(): void
     {
         $value = ' wikipedia is a free online encyclopedia';
