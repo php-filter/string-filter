@@ -13,6 +13,10 @@ final class Filter
         $this->value = $value;
     }
 
+    public function __toString(): string {
+        return $this->value;
+    }
+
     public static function of(string $value): self
     {
         return new self($value);
@@ -69,19 +73,21 @@ final class Filter
 
     public function lowerFirst(): self
     {
-        $this->value = mb_strtolower(mb_substr($this->value , 0, 1)).mb_substr($this->value , 1);
+        $this->value = mb_strtolower(mb_substr($this->value, 0, 1)).mb_substr($this->value, 1);
 
         return $this;
     }
 
-    public function htmlSpecialChars(): self {
-        $this->value = htmlspecialchars($this->value , ENT_QUOTES);
+    public function htmlSpecialChars(): self
+    {
+        $this->value = htmlspecialchars($this->value, ENT_QUOTES);
 
         return $this;
     }
 
-    public function htmlSpecialCharsDecode(): self {
-        $this->value = htmlspecialchars_decode($this->value , ENT_QUOTES);
+    public function htmlSpecialCharsDecode(): self
+    {
+        $this->value = htmlspecialchars_decode($this->value, ENT_QUOTES);
 
         return $this;
     }
@@ -209,7 +215,7 @@ final class Filter
 
     public function upperFirst(): self
     {
-        $this->value = mb_strtoupper(mb_substr($this->value , 0, 1)).mb_substr($this->value , 1);
+        $this->value = mb_strtoupper(mb_substr($this->value, 0, 1)).mb_substr($this->value, 1);
 
         return $this;
     }
