@@ -126,6 +126,13 @@ final class Filter
         return $this;
     }
 
+    public function removeMultipleSpaces(): self
+    {
+        $this->value = (string) preg_replace('/\s+/', ' ', $this->value);
+
+        return $this;
+    }
+
     public function repeat(int $multiplier): self
     {
         $this->value = str_repeat($this->value, $multiplier);
