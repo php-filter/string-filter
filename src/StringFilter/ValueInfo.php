@@ -6,7 +6,8 @@ namespace Smart\StringFilter;
 
 class ValueInfo
 {
-    private Filter $filter;
+    /** @var Filter */
+    private $filter;
 
     public function __construct(Filter $filter)
     {
