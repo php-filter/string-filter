@@ -1,5 +1,5 @@
 # PHP String Filters
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
 ![Tests](https://github.com/php-filter/string-filter/workflows/Testing/badge.svg?=1.x)
 [![Latest Version](https://img.shields.io/github/tag/php-filter/string-filter.svg)](https://github.com/php-filter/string-filter/releases)
 ![GitHub](https://img.shields.io/github/license/php-filter/string-filter.svg)
