@@ -20,40 +20,40 @@ $filter = Filter::of(null)->value()->intOrNull() // null
 
 **Filter list:**
 
-| Filter                                                       | Input                                           | Output                                          |
-| ------------------------------------------------------------ | ----------------------------------------------- | ----------------------------------------------- |
-| alnum()                                                      | `LLeMs!ZaF_F3dEX 4`                             | `LLeMsZaFF3dEX4`                                |
-| alnumWith(`chars` '_')                                       | `LLeMs!$%ZaF_F3dEX 4`                           | `LLeMsZaF_F3dEX4`                               |
-| append(`value` 'Smith')                                      | `John`                                          | `JohnSmith`                                     |
-| extractBetween(`startElement` '`<div>`', `endElement` '`</div>`') | `<div>test</div>`                               | `test`                                          |
-| htmlSpecialCharsDecode()                                     | `&lt;a href=&quot;test&quot;&gt;Test&lt;/a&gt;` | `<a href="test">Test</a>`                       |
-| htmlSpecialChars()                                           | `<a href="test">Test</a>`                       | `&lt;a href=&quot;test&quot;&gt;Test&lt;/a&gt;` |
-| letter()                                                     | `girl_123`                                      | `girl`                                          |
-| letterWith(`chars` '_')                                      | `girl_123!`                                     | `girl_`                                         |
-| limit(4)                                                     | `this is`                                       | `this`                                          |
-| lowerFirst()                                                 | `Big Ben`                                       | `big Ben`                                       |
-| lower()                                                      | `Lucy Brown`                                    | `lucy brown`                                    |
-| numeric()                                                    | `a123`                                          | `123`                                           |
-| numericWith(`chars` '.')                                     | `10.31 zl`                                      | `10.31`                                         |
-| prepend(`prependValue` 'John ')                              | `Smith`                                         | `JohnSmith`                                     |
-| removeMultipleSpaces()                                       | `Replacing     multiple spaces`                 | `Replacing multiple spaces`                     |
-| remove(`toRemove` ' Up Front')                               | `Big Design Up Front`                           | `Big Design`                                    |
-| repeat(`multiplier` 3)                                       | `test`                                          | `testtesttest`                                  |
-| replaceRegex(`regex` '/[^a-zA-Z0-9]/', '')                   | `Big-Design-Up-Front`                           | `BigDesignUpFront`                              |
-| replace(`search` 'Design Up Front', `replaceTo` 'Ball Of Mud') | `Big Design Up Front`                           | `Big Ball Of Mud`                               |
-| reverse()                                                    | `test`                                          | `tset`                                          |
-| shuffle()                                                    | `test`                                          | `tset`                                          |
-| stripHtml(`allowTags` '`<b>`')                               | `<u><b>test</b></u>`                            | `dsadsa`                                        |
-| strPadLeft(`length` 12, `pad` '0');                          | `2/10/2020`                                     | `0002/10/2020`                                  |
-| strPadRight(`length` 12, `pad` '0');                         | `0002/10/2`                                     | `0002/10/2000`                                  |
-| substr( `start` 0, `length`4);                               | `test 123`                                      | `test`                                          |
-| trimLeft()                                                   | ` test `                                        | `test `                                         |
-| trimRight()                                                  | ` test `                                        | ` test`                                         |
-| trim()                                                       | ` test `                                        | `test`                                          |
-| upperFirst()                                                 | `lucy`                                          | `Lucy`                                          |
-| upper()                                                      | `lucy Brown`                                    | `LUCY BROWN`                                    |
-| upperWords()                                                 | `lucy lue`                                      | `Lucy Lue`                                      |
-| wordWrap(`afterChars` 3, `break` '`</br>`')                  | `Big Design Up Front`                           | `Big</br>Design</br>Up</br>Front`               |
+| Filter                                    | Input                                           | Output                                          |
+| ----------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| alnum()                                   | `LLeMs!ZaF_F3dEX 4`                             | `LLeMsZaFF3dEX4`                                |
+| alnumWith('_')                            | `LLeMs!$%ZaF_F3dEX 4`                           | `LLeMsZaF_F3dEX4`                               |
+| append('Smith')                           | `John`                                          | `JohnSmith`                                     |
+| extractBetween('`<div>`',  '`</div>`')    | `<div>test</div>`                               | `test`                                          |
+| htmlSpecialCharsDecode()                  | `&lt;a href=&quot;test&quot;&gt;Test&lt;/a&gt;` | `<a href="test">Test</a>`                       |
+| htmlSpecialChars()                        | `<a href="test">Test</a>`                       | `&lt;a href=&quot;test&quot;&gt;Test&lt;/a&gt;` |
+| letter()                                  | `girl_123`                                      | `girl`                                          |
+| letterWith('_')                           | `girl_123!`                                     | `girl_`                                         |
+| limit(4)                                  | `this is`                                       | `this`                                          |
+| lowerFirst()                              | `Big Ben`                                       | `big Ben`                                       |
+| lower()                                   | `Lucy Brown`                                    | `lucy brown`                                    |
+| numeric()                                 | `a123`                                          | `123`                                           |
+| numericWith('.')                          | `10.31 zl`                                      | `10.31`                                         |
+| prepend('John ')                          | `Smith`                                         | `JohnSmith`                                     |
+| removeMultipleSpaces()                    | `Replacing     multiple spaces`                 | `Replacing multiple spaces`                     |
+| remove(`toRemove` ' Up Front')            | `Big Design Up Front`                           | `Big Design`                                    |
+| repeat(`multiplier` 3)                    | `test`                                          | `testtesttest`                                  |
+| replaceRegex('/[^a-zA-Z0-9]/', '')        | `Big-Design-Up-Front`                           | `BigDesignUpFront`                              |
+| replace('Design Up Front', 'Ball Of Mud') | `Big Design Up Front`                           | `Big Ball Of Mud`                               |
+| reverse()                                 | `test`                                          | `tset`                                          |
+| shuffle()                                 | `test`                                          | `tset`                                          |
+| stripHtml('`<b>`')                        | `<u><b>test</b></u>`                            | `dsadsa`                                        |
+| strPadLeft(12, '0');                      | `2/10/2020`                                     | `0002/10/2020`                                  |
+| strPadRight(12, '0');                     | `0002/10/2`                                     | `0002/10/2000`                                  |
+| substr(0, 4);                             | `test 123`                                      | `test`                                          |
+| trimLeft()                                | ` test `                                        | `test `                                         |
+| trimRight()                               | ` test `                                        | ` test`                                         |
+| trim()                                    | ` test `                                        | `test`                                          |
+| upperFirst()                              | `lucy`                                          | `Lucy`                                          |
+| upper()                                   | `lucy Brown`                                    | `LUCY BROWN`                                    |
+| upperWords()                              | `lucy lue`                                      | `Lucy Lue`                                      |
+| wordWrap(3, '`</br>`')                    | `Big Design Up Front`                           | `Big</br>Design</br>Up</br>Front`               |
 
 **Filter example:**
 
