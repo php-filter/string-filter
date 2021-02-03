@@ -14,6 +14,6 @@ final class RemoveTest extends TestCase
         $filter = Filter::of('Big Design Up Front')->remove(' Up Front');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('Big Design'));
+        self::assertThat($filter->valueString(), self::identicalTo('Big Design'));
     }
 }

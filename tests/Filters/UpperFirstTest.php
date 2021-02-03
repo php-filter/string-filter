@@ -14,6 +14,6 @@ final class UpperFirstTest extends TestCase
         $filter = Filter::of('lucy')->upperFirst();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('Lucy'));
+        self::assertThat($filter->valueString(), self::identicalTo('Lucy'));
     }
 }

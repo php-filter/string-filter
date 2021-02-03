@@ -11,9 +11,9 @@ final class LowerTest extends TestCase
 {
     public function testShouldLowerAllLettersInString(): void
     {
-        $filter = Filter::of('lucy Brown')->upper();
+        $filter = Filter::of('Lucy Brown')->lower();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('LUCY BROWN'));
+        self::assertThat($filter->valueString(), self::identicalTo('lucy brown'));
     }
 }

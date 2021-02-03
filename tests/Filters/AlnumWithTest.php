@@ -14,6 +14,6 @@ final class AlnumWithTest extends TestCase
         $filter = Filter::of('LLeMs!$%ZaF_F3dEX 4')->alnumWith(' _');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('LLeMsZaF_F3dEX 4'));
+        self::assertThat($filter->valueString(), self::identicalTo('LLeMsZaF_F3dEX 4'));
     }
 }

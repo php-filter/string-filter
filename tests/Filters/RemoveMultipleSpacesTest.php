@@ -14,6 +14,6 @@ final class RemoveMultipleSpacesTest extends TestCase
         $filter = Filter::of('Replacing     multiple spaces')->removeMultipleSpaces();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('Replacing multiple spaces'));
+        self::assertThat($filter->valueString(), self::identicalTo('Replacing multiple spaces'));
     }
 }

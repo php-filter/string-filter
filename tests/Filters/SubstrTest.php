@@ -14,6 +14,6 @@ final class SubstrTest extends TestCase
         $filter = Filter::of('test 123')->substr(0, 4);
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('test'));
+        self::assertThat($filter->valueString(), self::identicalTo('test'));
     }
 }

@@ -14,6 +14,6 @@ final class HtmlSpecialCharsDecodeTest extends TestCase
         $filter = Filter::of('&lt;a href=&quot;test&quot;&gt;Test&lt;/a&gt;')->htmlSpecialCharsDecode();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('<a href="test">Test</a>'));
+        self::assertThat($filter->valueString(), self::identicalTo('<a href="test">Test</a>'));
     }
 }

@@ -14,6 +14,6 @@ final class TrimLeftTest extends TestCase
         $filter = Filter::of(' test ')->trimLeft();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('test '));
+        self::assertThat($filter->valueString(), self::identicalTo('test '));
     }
 }

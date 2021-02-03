@@ -14,6 +14,6 @@ final class StrPadRightTest extends TestCase
         $filter = Filter::of('0002/10/2')->strPadRight(12, '0');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('0002/10/2000'));
+        self::assertThat($filter->valueString(), self::identicalTo('0002/10/2000'));
     }
 }

@@ -6,17 +6,20 @@ namespace Smart\StringFilter;
 
 class Filter
 {
-    /** @var string */
+    /** @var Value */
     private $value;
 
-    public function __construct(string $value)
+    /**
+     * @param object|bool|string|int|float|null $value
+     */
+    public function __construct($value)
     {
-        $this->value = $value;
+        $this->value = new Value($value);
     }
 
     public function __toString(): string
     {
-        return $this->value;
+        return $this->valueString();
     }
 
     public static function of(string $value): self
@@ -26,7 +29,8 @@ class Filter
 
     public function alnum(): self
     {
-        $this->value = (string) preg_replace('/[^[:alnum:]]/u', '', $this->value);
+        $value = (string) preg_replace('/[^[:alnum:]]/u', '', $this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
@@ -34,15 +38,16 @@ class Filter
     public function alnumWith(string $chars): self
     {
         $regex = '/[^[:alnum:]'.$chars.']/u';
-
-        $this->value = (string) preg_replace($regex, '', $this->value);
+        $value = (string) preg_replace($regex, '', $this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function append(string $value): self
     {
-        $this->value .= $value;
+        $value = $this->valueString().$value;
+        $this->value = new Value($value);
 
         return $this;
     }
@@ -53,123 +58,160 @@ class Filter
         $endElement = preg_quote($endElement, '/');
         $regex = '/'.$startElement.'(.*?)'.$endElement.'/';
 
-        preg_match($regex, $this->value, $match);
-        $this->value = $match[1];
+        preg_match($regex, $this->valueString(), $match);
+        $value = $match[1];
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function info(): ValueInfo
     {
-        return new ValueInfo($this);
+        return new ValueInfo($this->value);
     }
 
     public function letter(): self
     {
-        $this->value = (string) preg_replace('/[^[:alpha:]]/u', '', $this->value);
+        $value = (string) preg_replace('/[^[:alpha:]]/u', '', $this->valueString());
+        $this->value = new Value($value);
+
+        return $this;
+    }
+
+    public function letterWith(string $chars): self
+    {
+        $value = (string) preg_replace('/[^[:alpha:]'.$chars.']/u', '', $this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function limit(int $limit): self
     {
-        $this->value = mb_substr($this->value, 0, $limit);
+        $value = mb_substr($this->valueString(), 0, $limit);
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function lower(): self
     {
-        $this->value = mb_strtolower($this->value);
+        $value = mb_strtolower($this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function lowerFirst(): self
     {
-        $this->value = mb_strtolower(mb_substr($this->value, 0, 1)).mb_substr($this->value, 1);
+        $value = mb_strtolower(mb_substr($this->valueString(), 0, 1)).mb_substr($this->valueString(), 1);
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function htmlSpecialChars(): self
     {
-        $this->value = htmlspecialchars($this->value, ENT_QUOTES);
+        $value = htmlspecialchars($this->valueString(), ENT_QUOTES);
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function htmlSpecialCharsDecode(): self
     {
-        $this->value = htmlspecialchars_decode($this->value, ENT_QUOTES);
+        $value = htmlspecialchars_decode($this->valueString(), ENT_QUOTES);
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function numeric(): self
     {
-        $this->value = (string) preg_replace('/[^0-9]/', '', $this->value);
+        $value = (string) preg_replace('/[^0-9]/', '', $this->valueString());
+        $this->value = new Value($value);
+
+        return $this;
+    }
+
+    public function numericWith(string $chars): self
+    {
+        $value = (string) preg_replace('/[^0-9'.$chars.']/', '', $this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function prepend(string $value): self
     {
-        $this->value = $value.$this->value;
+        $value .= $this->valueString();
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function remove(string $toRemove): self
     {
-        $this->value = str_replace($toRemove, '', $this->value);
+        $value = str_replace($toRemove, '', $this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function removeMultipleSpaces(): self
     {
-        $this->value = (string) preg_replace('/\s+/', ' ', $this->value);
+        $value = (string) preg_replace('/\s+/', ' ', $this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function repeat(int $multiplier): self
     {
-        $this->value = str_repeat($this->value, $multiplier);
+        $value = str_repeat($this->valueString(), $multiplier);
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function replace(string $search, string $replaceTo): self
     {
-        $this->value = str_replace($search, $replaceTo, $this->value);
+        $value = str_replace($search, $replaceTo, $this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function replaceRegex(string $regex, string $replaceTo): self
     {
-        $this->value = (string) preg_replace($regex, $replaceTo, $this->value);
+        $value = (string) preg_replace($regex, $replaceTo, $this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
-    public function value(): string
+    public function value(): Value
     {
         return $this->value;
     }
 
+    public function valueString(): string
+    {
+        return $this->value->string();
+    }
+
     public function reverse(): self
     {
-        $this->value = strrev($this->value);
+        $value = strrev($this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function shuffle(): self
     {
-        $this->value = str_shuffle($this->value);
+        $value = str_shuffle($this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
@@ -177,80 +219,93 @@ class Filter
     public function stripHtml(?string $allowTags = null): self
     {
         if ($allowTags === null) {
-            $this->value = strip_tags($this->value);
+            $value = strip_tags($this->valueString());
         } else {
-            $this->value = strip_tags($this->value, $allowTags);
+            $value = strip_tags($this->valueString(), $allowTags);
         }
+
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function strPadLeft(int $length, string $pad): self
     {
-        $this->value = str_pad($this->value, $length, $pad, STR_PAD_LEFT);
+        $value = str_pad($this->valueString(), $length, $pad, STR_PAD_LEFT);
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function strPadRight(int $length, string $pad): self
     {
-        $this->value = str_pad($this->value, $length, $pad, STR_PAD_RIGHT);
+        $value = str_pad($this->valueString(), $length, $pad, STR_PAD_RIGHT);
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function substr(int $start, int $length): self
     {
-        $this->value = mb_substr($this->value, $start, $length);
+        $value = mb_substr($this->valueString(), $start, $length);
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function trim(): self
     {
-        $this->value = trim($this->value);
+        $value = trim($this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function trimLeft(): self
     {
-        $this->value = ltrim($this->value);
+        $value = ltrim($this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function trimRight(): self
     {
-        $this->value = rtrim($this->value);
+        $value = rtrim($this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function upper(): self
     {
-        $this->value = mb_strtoupper($this->value);
+        $value = mb_strtoupper($this->valueString());
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function upperFirst(): self
     {
-        $this->value = mb_strtoupper(mb_substr($this->value, 0, 1)).mb_substr($this->value, 1);
+        $valueString = $this->valueString();
+        $value = mb_strtoupper(mb_substr($valueString, 0, 1)).mb_substr($valueString, 1);
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function upperWords(): self
     {
-        $this->value = mb_convert_case($this->value, MB_CASE_TITLE, 'UTF-8');
+        $value = mb_convert_case($this->valueString(), MB_CASE_TITLE, 'UTF-8');
+        $this->value = new Value($value);
 
         return $this;
     }
 
     public function wordWrap(int $afterChars, string $break = "\n"): self
     {
-        $this->value = wordwrap($this->value, $afterChars, $break, false);
+        $value = wordwrap($this->valueString(), $afterChars, $break, false);
+        $this->value = new Value($value);
 
         return $this;
     }

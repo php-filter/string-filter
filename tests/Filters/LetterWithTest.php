@@ -7,13 +7,13 @@ namespace Smart\Tests\Filters;
 use PHPUnit\Framework\TestCase;
 use Smart\StringFilter\Filter;
 
-final class LetterTest extends TestCase
+final class LetterWithTest extends TestCase
 {
     public function testShouldLeaveOnlyLetters(): void
     {
-        $filter = Filter::of('girl_123')->letter();
+        $filter = Filter::of('girl_123!')->letterWith('_');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->valueString(), self::identicalTo('girl'));
+        self::assertThat($filter->valueString(), self::identicalTo('girl_'));
     }
 }

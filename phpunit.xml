@@ -10,6 +10,7 @@
          failOnWarning="true"
          verbose="true"
          colors="true"
+         cacheResult ="false"
 >
     <testsuites>
         <testsuite name="default">

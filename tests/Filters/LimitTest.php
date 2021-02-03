@@ -14,6 +14,6 @@ final class LimitTest extends TestCase
         $filter = Filter::of('this is ')->limit(4);
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('this'));
+        self::assertThat($filter->valueString(), self::identicalTo('this'));
     }
 }

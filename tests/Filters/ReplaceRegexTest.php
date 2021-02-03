@@ -14,6 +14,6 @@ final class ReplaceRegexTest extends TestCase
         $filter = Filter::of('Big-Design-Up-Front')->replaceRegex('/[^a-zA-Z0-9]/', '');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('BigDesignUpFront'));
+        self::assertThat($filter->valueString(), self::identicalTo('BigDesignUpFront'));
     }
 }

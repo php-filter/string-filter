@@ -14,6 +14,6 @@ final class ReplaceTest extends TestCase
         $filter = Filter::of('Big Design Up Front')->replace('Design Up Front', 'Ball Of Mud');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('Big Ball Of Mud'));
+        self::assertThat($filter->valueString(), self::identicalTo('Big Ball Of Mud'));
     }
 }

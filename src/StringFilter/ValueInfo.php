@@ -6,17 +6,17 @@ namespace Smart\StringFilter;
 
 class ValueInfo
 {
-    /** @var Filter */
-    private $filter;
+    /** @var Value */
+    private $value;
 
-    public function __construct(Filter $filter)
+    public function __construct(Value $value)
     {
-        $this->filter = $filter;
+        $this->value = $value;
     }
 
     public function length(): int
     {
-        return strlen($this->filter->value());
+        return strlen($this->value->string());
     }
 
     public function count(): int
@@ -26,11 +26,11 @@ class ValueInfo
 
     public function wordsCount(): int
     {
-        return str_word_count($this->filter->value(), 0);
+        return str_word_count($this->value->string(), 0);
     }
 
     public function phaseCount(string $phase): int
     {
-        return substr_count($this->filter->value(), $phase);
+        return substr_count($this->value->string(), $phase);
     }
 }

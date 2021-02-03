@@ -7,13 +7,13 @@ namespace Smart\Tests\Filters;
 use PHPUnit\Framework\TestCase;
 use Smart\StringFilter\Filter;
 
-final class NumericTest extends TestCase
+final class NumericWithTest extends TestCase
 {
     public function testShouldLeaveOnlyNumbers(): void
     {
-        $filter = Filter::of('a123')->numeric();
+        $filter = Filter::of('10.31 zl')->numericWith('.');
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->valueString(), self::identicalTo('123'));
+        self::assertThat($filter->value()->float(), self::identicalTo(10.31));
     }
 }

@@ -6,6 +6,7 @@ $finder = PhpCsFixer\Finder::create()
 ;
 
 return PhpCsFixer\Config::create()
+    ->setCacheFile(__DIR__.'/var/.php_cs.cache')
     ->setRiskyAllowed(true)
     ->setRules([
         '@PHP71Migration' => true,

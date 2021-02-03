@@ -14,6 +14,6 @@ final class UpperWordsTest extends TestCase
         $filter = Filter::of('lucy lue')->upperWords();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('Lucy Lue'));
+        self::assertThat($filter->valueString(), self::identicalTo('Lucy Lue'));
     }
 }

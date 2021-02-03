@@ -6,17 +6,65 @@
 
 PHP String Filter is a library to perform character string transformation using a chain. You can use the most popular filters built into PHP and additional ones added by the author and community.
 
-For a list of filters and more examples of their application, see [unit tests](https://github.com/php-filter/string-filter/tree/main/tests/Filters).
+Support the following **input data** types: **string, integer, float, boolean, null and object** (must have a __toString method)
+Support the following **output data** types: string, **int, float, bool and stringOrNull, intOrNull, floatOrNull**
 
-**Example filter:**
+**Example value:**
 
 ```php
+$filter = Filter::of(10.00)->value()->int() // 10
+$filter = Filter::of(10.00)->value()->string() // '10.00'
+$filter = Filter::of(true)->value()->string() // 'true'
+$filter = Filter::of(null)->value()->intOrNull() // null
+```
+
+**Filter list:**
+
+| Filter                                                       | Input                                           | Output                                          |
+| ------------------------------------------------------------ | ----------------------------------------------- | ----------------------------------------------- |
+| alnum()                                                      | `LLeMs!ZaF_F3dEX 4`                             | `LLeMsZaFF3dEX4`                                |
+| alnumWith(`chars` '_')                                       | `LLeMs!$%ZaF_F3dEX 4`                           | `LLeMsZaF_F3dEX4`                               |
+| append(`value` 'Smith')                                      | `John`                                          | `JohnSmith`                                     |
+| extractBetween(`startElement` '<div>', `endElement` '</div>') | `<div>test</div>`                               | `test`                                          |
+| htmlSpecialCharsDecode()                                     | `&lt;a href=&quot;test&quot;&gt;Test&lt;/a&gt;` | `<a href="test">Test</a>`                       |
+| htmlSpecialChars()                                           | `<a href="test">Test</a>`                       | `&lt;a href=&quot;test&quot;&gt;Test&lt;/a&gt;` |
+| letter()                                                     | `girl_123`                                      | `girl`                                          |
+| limit(4)                                                     | `this is`                                       | `this`                                          |
+| lowerFirst()                                                 | `Big Ben`                                       | `big Ben`                                       |
+| lower()                                                      | `Lucy Brown`                                    | `lucy brown`                                    |
+| numeric()                                                    | `a123`                                          | `123`                                           |
+| prepend(`prependValue` 'John ')                              | `Smith`                                         | `JohnSmith`                                     |
+| removeMultipleSpaces()                                       | `Replacing     multiple spaces`                 | `Replacing multiple spaces`                     |
+| remove(`toRemove` ' Up Front')                               | `Big Design Up Front`                           | `Big Design`                                    |
+| repeat(`multiplier` 3)                                       | `test`                                          | `testtesttest`                                  |
+| replaceRegex(`regex` '/[^a-zA-Z0-9]/', '')                   | `Big-Design-Up-Front`                           | `BigDesignUpFront`                              |
+| replace(`search` 'Design Up Front', `replaceTo` 'Ball Of Mud') | `Big Design Up Front`                           | `Big Ball Of Mud`                               |
+| reverse()                                                    | `test`                                          | `tset`                                          |
+| shuffle()                                                    | `test`                                          | `tset`                                          |
+| stripHtml(`allowTags` '<b>')                                 | `<u><b>test</b></u>`                            | `dsadsa`                                        |
+| strPadLeft(`length` 12, `pad` '0');                          | `2/10/2020`                                     | `0002/10/2020`                                  |
+| strPadRight(`length` 12, `pad` '0');                         | `0002/10/2`                                     | `0002/10/2000`                                  |
+| substr( `start` 0, `length`4);                               | `test 123`                                      | `test`                                          |
+| trimLeft()                                                   | ` test `                                        | `test `                                         |
+| trimRight()                                                  | ` test `                                        | ` test`                                         |
+| trim()                                                       | ` test `                                        | `test`                                          |
+| upperFirst()                                                 | `lucy`                                          | `Lucy`                                          |
+| upper()                                                      | `lucy Brown`                                    | `LUCY BROWN`                                    |
+| upperWords()                                                 | `lucy lue`                                      | `Lucy Lue`                                      |
+| wordWrap(`afterChars` 3, `break` '</br>')                    | `Big Design Up Front`                           | `Big</br>Design</br>Up</br>Front`               |
+
+**Filter example:**
+
+For a list of filters and more examples of their application, see [unit tests](https://github.com/php-filter/string-filter/tree/main/tests/Filters).
+
+```php
+
 $filter = Filter::of('/_big_ball_of_mud_/')
             ->replace('/', '')
             ->replace('_', '')
             ->upperWords();
 
-$filter->value(); // 'Big Ball Of Mud'
+$filter->valueString(); // 'Big Ball Of Mud'
 ```
 
 **An example of a reusable filter grouping:**
@@ -28,7 +76,7 @@ $groupFilters = function ($value) {
 
 $filter = $groupFilters(' wikipedia is a free online encyclopedia');
 
-$filter->value(); // 'Wikipedia is a free online encyclopedia.'
+$filter->valueString(); // 'Wikipedia is a free online encyclopedia.'
 
 ```
 
@@ -50,7 +98,7 @@ $info->phaseCount('ee'); // 2
 
 ## License
 
-PHP String Filters is released under the MIT Licence. See the bundled LICENSE file for details.
+PHP String Filters is released under the MIT License. See the bundled LICENSE file for details.
 
 ## Author
 

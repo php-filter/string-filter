@@ -18,7 +18,7 @@ class FiltersTest extends TestCase
             ->upperWords();
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->value(), self::identicalTo('Big Ball Of Mud'));
+        self::assertThat($filter->valueString(), self::identicalTo('Big Ball Of Mud'));
     }
 
     public function testShouldFilterToString(): void
@@ -26,7 +26,7 @@ class FiltersTest extends TestCase
         $filter = Filter::of('toString')->substr(2, 10);
 
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filter->__toString(), self::identicalTo('String'));
+        self::assertThat($filter->valueString(), self::identicalTo('String'));
     }
 
     public function testShouldGroupFilterAndRun(): void
@@ -40,7 +40,7 @@ class FiltersTest extends TestCase
         $filters = $groupFilters($value);
 
         self::assertThat($filters, self::containsOnlyInstancesOf(Filter::class));
-        self::assertThat($filters->value(), self::identicalTo('Wikipedia is a free online encyclopedia.'));
+        self::assertThat($filters->valueString(), self::identicalTo('Wikipedia is a free online encyclopedia.'));
     }
 
     public function testShouldGetInfoAboutValue(): void
