@@ -9,15 +9,6 @@ PHP String Filter is a library to perform character string transformation using 
 Support the following **input data** types: **string, integer, float, boolean, null and object** (must have a __toString method)
 Support the following **output data** types: string, **int, float, bool and stringOrNull, intOrNull, floatOrNull**
 
-**Example value:**
-
-```php
-$filter = Filter::of(10.00)->value()->int() // 10
-$filter = Filter::of(10.00)->value()->string() // '10.00'
-$filter = Filter::of(true)->value()->string() // 'true'
-$filter = Filter::of(null)->value()->intOrNull() // null
-```
-
 **Filter list:**
 
 | Filter                                    | Input                                           | Output                                          |
@@ -82,6 +73,15 @@ $filter->valueString(); // 'Wikipedia is a free online encyclopedia.'
 
 ```
 
+**Example value output:**
+
+```php
+$filter = Filter::of(10.00)->value()->int() // 10
+$filter = Filter::of(10.00)->value()->string() // '10.00'
+$filter = Filter::of(true)->value()->string() // 'true'
+$filter = Filter::of(null)->value()->intOrNull() // null
+```
+
 **Example of value information:**
 
 ```php
@@ -94,8 +94,8 @@ $info->phaseCount('ee'); // 2
 
 ## Roadmap
 
+- [x] Description of all filters with examples
 - [ ] Add more filters
-- [ ] Description of all filters with examples
 - [ ] You tell me...
 
 ## License
