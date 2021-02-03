@@ -9,7 +9,7 @@ use Smart\StringFilter\Filter;
 
 final class LetterWithTest extends TestCase
 {
-    public function testShouldLeaveOnlyLetters(): void
+    public function testShouldLeaveOnlyLettersAndSpecifiedCharacters(): void
     {
         $filter = Filter::of('girl_123!')->letterWith('_');
 

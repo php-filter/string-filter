@@ -9,7 +9,7 @@ use Smart\StringFilter\Filter;
 
 final class NumericWithTest extends TestCase
 {
-    public function testShouldLeaveOnlyNumbers(): void
+    public function testShouldLeaveOnlyNumbersAndSpecifiedCharacters(): void
     {
         $filter = Filter::of('10.31 zl')->numericWith('.');
 

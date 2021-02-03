@@ -16,4 +16,12 @@ final class TrimLeftTest extends TestCase
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
         self::assertThat($filter->valueString(), self::identicalTo('test '));
     }
+
+    public function testShouldLeftTrimStringWithSpecifiedCharacters(): void
+    {
+        $filter = Filter::of('.test ')->trimLeft('.');
+
+        self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
+        self::assertThat($filter->valueString(), self::identicalTo('test '));
+    }
 }

@@ -96,4 +96,9 @@ class Value
 
         return $this->float();
     }
+
+    public function info(): ValueInfo
+    {
+        return new ValueInfo($this);
+    }
 }

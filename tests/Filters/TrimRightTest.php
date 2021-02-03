@@ -16,4 +16,12 @@ final class TrimRightTest extends TestCase
         self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
         self::assertThat($filter->valueString(), self::identicalTo(' test'));
     }
+
+    public function testShouldRightTrimStringWithSpecifiedCharacters(): void
+    {
+        $filter = Filter::of(' test.')->trimRight('.');
+
+        self::assertThat($filter, self::containsOnlyInstancesOf(Filter::class));
+        self::assertThat($filter->valueString(), self::identicalTo(' test'));
+    }
 }

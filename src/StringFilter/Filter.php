@@ -52,6 +52,14 @@ class Filter
         return $this;
     }
 
+    public function camelize(): self
+    {
+        $value = lcfirst(str_replace(' ', '', ucwords((string) preg_replace('/[^a-zA-Z0-9\x7f-\xff]++/', ' ', $this->valueString()))));
+        $this->value = new Value($value);
+
+        return $this;
+    }
+
     public function extractBetween(string $startElement, string $endElement): self
     {
         $startElement = preg_quote($startElement, '/');
@@ -261,17 +269,17 @@ class Filter
         return $this;
     }
 
-    public function trimLeft(): self
+    public function trimLeft(string $chars = " \t\n\r\0\x0B\x0C"): self
     {
-        $value = ltrim($this->valueString());
+        $value = ltrim($this->valueString(), $chars);
         $this->value = new Value($value);
 
         return $this;
     }
 
-    public function trimRight(): self
+    public function trimRight(string $chars = " \t\n\r\0\x0B\x0C"): self
     {
-        $value = rtrim($this->valueString());
+        $value = rtrim($this->valueString(), $chars);
         $this->value = new Value($value);
 
         return $this;

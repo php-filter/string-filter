@@ -16,6 +16,7 @@ Support the following **output data** types: string, **int, float, bool and stri
 | alnum()                                   | `LLeMs!ZaF_F3dEX 4`                             | `LLeMsZaFF3dEX4`                                |
 | alnumWith('_')                            | `LLeMs!$%ZaF_F3dEX 4`                           | `LLeMsZaF_F3dEX4`                               |
 | append('Smith')                           | `John`                                          | `JohnSmith`                                     |
+| camelize()                                | `primary-getallgroups-sys`                      | `primaryGetallgroupsSys`                        |
 | extractBetween('`<div>`',  '`</div>`')    | `<div>test</div>`                               | `test`                                          |
 | htmlSpecialCharsDecode()                  | `&lt;a href=&quot;test&quot;&gt;Test&lt;/a&gt;` | `<a href="test">Test</a>`                       |
 | htmlSpecialChars()                        | `<a href="test">Test</a>`                       | `&lt;a href=&quot;test&quot;&gt;Test&lt;/a&gt;` |
@@ -38,8 +39,8 @@ Support the following **output data** types: string, **int, float, bool and stri
 | strPadLeft(12, '0');                      | `2/10/2020`                                     | `0002/10/2020`                                  |
 | strPadRight(12, '0');                     | `0002/10/2`                                     | `0002/10/2000`                                  |
 | substr(0, 4);                             | `test 123`                                      | `test`                                          |
-| trimLeft()                                | ` test `                                        | `test `                                         |
-| trimRight()                               | ` test `                                        | ` test`                                         |
+| trimLeft('.')                             | ` .test `                                       | `test `                                         |
+| trimRight('.')                            | ` test. `                                       | ` test`                                         |
 | trim()                                    | ` test `                                        | `test`                                          |
 | upperFirst()                              | `lucy`                                          | `Lucy`                                          |
 | upper()                                   | `lucy Brown`                                    | `LUCY BROWN`                                    |
