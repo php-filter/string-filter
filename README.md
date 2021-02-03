@@ -37,8 +37,8 @@ $filter = Filter::of(null)->value()->intOrNull() // null
 | numericWith('.')                          | `10.31 zl`                                      | `10.31`                                         |
 | prepend('John ')                          | `Smith`                                         | `JohnSmith`                                     |
 | removeMultipleSpaces()                    | `Replacing     multiple spaces`                 | `Replacing multiple spaces`                     |
-| remove(`toRemove` ' Up Front')            | `Big Design Up Front`                           | `Big Design`                                    |
-| repeat(`multiplier` 3)                    | `test`                                          | `testtesttest`                                  |
+| remove(' Up Front')                       | `Big Design Up Front`                           | `Big Design`                                    |
+| repeat(3)                                 | `test`                                          | `testtesttest`                                  |
 | replaceRegex('/[^a-zA-Z0-9]/', '')        | `Big-Design-Up-Front`                           | `BigDesignUpFront`                              |
 | replace('Design Up Front', 'Ball Of Mud') | `Big Design Up Front`                           | `Big Ball Of Mud`                               |
 | reverse()                                 | `test`                                          | `tset`                                          |
