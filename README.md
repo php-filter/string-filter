@@ -9,6 +9,25 @@ PHP String Filter is a library to perform character string transformation using 
 Support the following **input data** types: **string, integer, float, boolean, null and object** (must have a __toString method)
 Support the following **output data** types: string, **int, float, bool and stringOrNull, intOrNull, floatOrNull**
 
+## Installation
+
+Install in your projects:
+
+```bash
+composer require php-filter/string
+```
+
+And use:
+
+```php+HTML
+$filter = Filter::of('/_big_ball_of_mud_/')
+            ->replace('/', '')
+            ->replace('_', '')
+            ->upperWords();
+
+$filter->valueString(); // 'Big Ball Of Mud'
+```
+
 **Filter list:**
 
 | Filter                                    | Input                                           | Output                                          |
